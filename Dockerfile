@@ -1,16 +1,6 @@
 FROM kevindarby/linux_docker
 
 
-# Set version with --build-arg SDK_VERSION=X
-# This lets us query an image to see when it was built
-ARG SDK_VERSION=0
-ARG SDK_BUILD_DATE=0
-
-# configure build_examples
-env SDK_ROOT=/sdk \
-    SDK_VERSION=$SDK_VERSION \
-    SDK_BUILD_DATE=$SDK_BUILD_DATE
-
 # add user algo
 RUN groupadd --gid 1000 algo && \
     useradd -s /bin/bash --uid 1000 --gid 1000 -m algo && \
@@ -24,10 +14,6 @@ RUN groupadd --gid 1000 algo && \
     chmod +777 /sparkbin/plugins && \
     chown -R algo.algo /sparkdata 
 
-# copy sdk
-# fuck why isn't this working
-#COPY include/ /sdk/include/
-#COPY lib/ /sparkbin/
-#COPY externals /sdk/externals/
+# copy bare min for dev
 COPY sdk_spark.conf /sparkdata/conf/
 COPY --chown=bts futures.coconut /sparkdata/data/replay/futures.coconut
