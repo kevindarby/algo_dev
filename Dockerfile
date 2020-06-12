@@ -21,7 +21,7 @@ RUN groupadd --gid 1000 algo && \
     echo algo ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/algo && \
     chmod 0440 /etc/sudoers.d/algo && \
     chown -R algo.algo /sparkbin/plugins && \
-    chmod +777 /sparkbin/plugins \
+    chmod +777 /sparkbin/plugins && \
     chown -R algo.algo /sparkdata 
 
 # copy sdk
