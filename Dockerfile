@@ -16,4 +16,4 @@ RUN groupadd --gid 1000 algo && \
 
 # copy bare min for dev
 COPY sdk_spark.conf /sparkdata/conf/
-COPY --chown=bts futures.coconut /sparkdata/data/replay/futures.coconut
+COPY --chown=algo futures.coconut /sparkdata/data/replay/futures.coconut
